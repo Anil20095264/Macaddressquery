@@ -1,0 +1,29 @@
+#chmod 744 Macaddressquery.py
+
+nano Macaddressquery.py
+#! /usr/bin/python2.7
+raw_input("\n\nPlease enter the Macaddress:")
+import uuid
+def isMAC48Address(inputString):
+    if inputString.count(":")!=5:
+        return False
+    for i in inputString.split(":"):
+        for j in i:
+            if j>"F" or (j<"A" and not j.isdigit()) or len(i)!=2:
+                return False
+    return True   
+    print (hex(uuid.getnode()))
+import platform
+
+# Architecture
+print("Architecture: " + platform.architecture()[0])
+
+# machine
+print("Machine: " + platform.machine())
+
+# node
+print("Node: " + platform.node())
+
+# system
+print("System: " + platform.system())
+
