@@ -1,0 +1,26 @@
+#chmod 744 Macaddressquery.py
+
+nano Macaddressquery.py
+#! /usr/bin/python2.7
+macaddress= raw_input("\n\nPlease enter the Macaddress:")
+import uuid
+def isMAC48Address(inputString):
+    if inputString.count(":")!=5:
+        return False
+    for i in inputString.split(":"):
+        for j in i:
+            if j>"F" or (j<"A" and not j.isdigit()) or len(i)!=2:
+                return False
+    return True   
+    print (hex(uuid.getnode()))
+    print (macaddress)
+    
+import urllib2
+from BeautifulSoup import BeautifulSoup
+
+url = "https://macaddress.io/"
+soup = BeautifulSoup(urllib2.urlopen(url).read())
+
+for row in soup.findAll('table')[0].tbody.findAll('Company name'):
+    first_column = row.findAll('Company name')[0].contents
+    print first_column
